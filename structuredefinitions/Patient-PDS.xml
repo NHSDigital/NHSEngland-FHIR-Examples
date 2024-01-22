@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="https://example.org/fhir/StructureDefinition/Patient-PDS" />
+  <version value="0.0.1" />
+  <name value="PatientPDS" />
+  <status value="draft" />
+  <description value="Validation profile for PDS" />
+  <fhirVersion value="4.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Patient" />
+  <baseDefinition value="https://fhir.hl7.org.uk/StructureDefinition/UKCore-Patient" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Patient.extension:deathNotificationStatus">
+      <path value="Patient.extension" />
+      <sliceName value="deathNotificationStatus" />
+    </element>
+    <element id="Patient.extension:deathNotificationStatus.extension:deathNotificationStatus">
+      <path value="Patient.extension.extension" />
+      <sliceName value="deathNotificationStatus" />
+    </element>
+    <element id="Patient.extension:deathNotificationStatus.extension:deathNotificationStatus.value[x].coding.system">
+      <path value="Patient.extension.extension.value[x].coding.system" />
+      <min value="1" />
+    </element>
+    <element id="Patient.extension:deathNotificationStatus.extension:deathNotificationStatus.value[x].coding.code">
+      <path value="Patient.extension.extension.value[x].coding.code" />
+      <min value="1" />
+    </element>
+    <element id="Patient.identifier:nhsNumber">
+      <path value="Patient.identifier" />
+      <sliceName value="nhsNumber" />
+    </element>
+    <element id="Patient.identifier:nhsNumber.extension:nhsNumberVerificationStatus">
+      <path value="Patient.identifier.extension" />
+      <sliceName value="nhsNumberVerificationStatus" />
+    </element>
+    <element id="Patient.identifier:nhsNumber.extension:nhsNumberVerificationStatus.value[x].coding">
+      <path value="Patient.identifier.extension.value[x].coding" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Patient.identifier:nhsNumber.extension:nhsNumberVerificationStatus.value[x].coding.code">
+      <path value="Patient.identifier.extension.value[x].coding.code" />
+      <min value="1" />
+    </element>
+    <element id="Patient.name">
+      <path value="Patient.name" />
+      <min value="1" />
+    </element>
+    <element id="Patient.name.use">
+      <path value="Patient.name.use" />
+      <min value="1" />
+    </element>
+    <element id="Patient.name.family">
+      <path value="Patient.name.family" />
+      <min value="1" />
+    </element>
+    <element id="Patient.name.period.start">
+      <path value="Patient.name.period.start" />
+      <min value="1" />
+    </element>
+    <element id="Patient.telecom.value">
+      <path value="Patient.telecom.value" />
+      <min value="1" />
+    </element>
+    <element id="Patient.telecom.period.end">
+      <path value="Patient.telecom.period.end" />
+      <min value="1" />
+    </element>
+    <element id="Patient.address.extension">
+      <path value="Patient.address.extension" />
+      <min value="2" />
+    </element>
+    <element id="Patient.address.extension:addressKey">
+      <path value="Patient.address.extension" />
+      <sliceName value="addressKey" />
+      <min value="2" />
+      <max value="2" />
+    </element>
+    <element id="Patient.address.extension:addressKey.extension:type">
+      <path value="Patient.address.extension.extension" />
+      <sliceName value="type" />
+    </element>
+    <element id="Patient.address.extension:addressKey.extension:type.value[x].coding.system">
+      <path value="Patient.address.extension.extension.value[x].coding.system" />
+      <min value="1" />
+    </element>
+    <element id="Patient.address.extension:addressKey.extension:type.value[x].coding.code">
+      <path value="Patient.address.extension.extension.value[x].coding.code" />
+      <min value="1" />
+    </element>
+    <element id="Patient.address.extension:addressKey.extension:value">
+      <path value="Patient.address.extension.extension" />
+      <sliceName value="value" />
+    </element>
+    <element id="Patient.address.extension:addressKey.extension:value.value[x]">
+      <path value="Patient.address.extension.extension.value[x]" />
+      <constraint>
+        <key value="pat-pds-001" />
+        <severity value="error" />
+        <human value="if code=PAF then minLength=maxLength=8, if UPRN then minLength=1 maxLength=12" />
+      </constraint>
+    </element>
+    <element id="Patient.address.use">
+      <path value="Patient.address.use" />
+      <min value="1" />
+    </element>
+    <element id="Patient.address.line">
+      <path value="Patient.address.line" />
+      <maxLength value="5" />
+    </element>
+    <element id="Patient.address.period.start">
+      <path value="Patient.address.period.start" />
+      <min value="1" />
+    </element>
+    <element id="Patient.multipleBirth[x]">
+      <path value="Patient.multipleBirth[x]" />
+      <type>
+        <code value="integer" />
+      </type>
+      <minValueInteger value="1" />
+      <maxValueInteger value="9" />
+    </element>
+    <element id="Patient.contact.relationship">
+      <path value="Patient.contact.relationship" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Patient.contact.relationship.coding">
+      <path value="Patient.contact.relationship.coding" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Patient.contact.telecom">
+      <path value="Patient.contact.telecom" />
+      <min value="1" />
+    </element>
+    <element id="Patient.contact.telecom.system">
+      <path value="Patient.contact.telecom.system" />
+      <min value="1" />
+    </element>
+    <element id="Patient.contact.telecom.value">
+      <path value="Patient.contact.telecom.value" />
+      <min value="1" />
+    </element>
+    <element id="Patient.contact.telecom.period.start">
+      <path value="Patient.contact.telecom.period.start" />
+      <min value="1" />
+    </element>
+    <element id="Patient.generalPractitioner">
+      <path value="Patient.generalPractitioner" />
+      <max value="1" />
+    </element>
+    <element id="Patient.generalPractitioner.identifier">
+      <path value="Patient.generalPractitioner.identifier" />
+      <min value="1" />
+    </element>
+    <element id="Patient.generalPractitioner.identifier.value">
+      <path value="Patient.generalPractitioner.identifier.value" />
+      <min value="1" />
+    </element>
+  </differential>
+</StructureDefinition>
