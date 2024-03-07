@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="England-Patient-PDS" />
+  <url value="https://fhir.nhs.uk/England/StructureDefinition/England-Patient-PDS" />
+  <version value="0.0.1" />
+  <name value="EnglandPatientPDS" />
+  <title value="England Patient PDS" />
+  <status value="draft" />
+  <date value="2024-03-05" />
+  <publisher value="NHS England" />
+  <contact>
+    <name value="NHS England" />
+    <telecom>
+      <system value="email" />
+      <value value="interoperabilityteam@nhs.net" />
+      <use value="work" />
+      <rank value="1" />
+    </telecom>
+  </contact>
+  <description value="This profile is made available to assist implementers who are creating and sending Patient FHIR instances to test that the created instances conform to the PDS FHIR implementation guide. It may also assist receivers testing that received instances are conformant with the PDS FHIR implementation guide." />
+  <purpose value="This profile is made available to assist implementers who are creating and sending FHIR instances to test that the created instances conform to a specific FHIR implementation guide. It may also assist receivers testing that received instances are conformant with the FHIR implementation guide.&#xD; **Use of this profile is on the understanding that it is for testing purposes only. Use of this profile does not provide any form of assurance or accreditation and furthermore does not guarantee system conformance to a given FHIR Implementation guide.**" />
+  <copyright value="Copyright © 2023+ NHS England Licensed under the Apache License, Version 2.0 (the \&quot;License\&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at  http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \&quot;AS IS\&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. HL7® FHIR® standard Copyright © 2011+ HL7 The HL7® FHIR® standard is used under the FHIR license. You may obtain a copy of the FHIR license at  https://www.hl7.org/fhir/license.html." />
+  <fhirVersion value="4.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Patient" />
+  <baseDefinition value="https://fhir.hl7.org.uk/StructureDefinition/UKCore-Patient" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Patient.extension:deathNotificationStatus">
+      <path value="Patient.extension" />
+      <sliceName value="deathNotificationStatus" />
+    </element>
+    <element id="Patient.extension:deathNotificationStatus.extension">
+      <path value="Patient.extension.extension" />
+      <min value="1" />
+    </element>
+    <element id="Patient.name">
+      <path value="Patient.name" />
+      <min value="1" />
+    </element>
+    <element id="Patient.gender">
+      <path value="Patient.gender" />
+      <min value="1" />
+    </element>
+    <element id="Patient.birthDate">
+      <path value="Patient.birthDate" />
+      <min value="1" />
+    </element>
+    <element id="Patient.address">
+      <path value="Patient.address" />
+      <min value="1" />
+    </element>
+    <element id="Patient.address.extension:addressKey">
+      <path value="Patient.address.extension" />
+      <sliceName value="addressKey" />
+    </element>
+    <element id="Patient.address.extension:addressKey.extension">
+      <path value="Patient.address.extension.extension" />
+      <min value="2" />
+    </element>
+    <element id="Patient.communication">
+      <path value="Patient.communication" />
+      <min value="1" />
+    </element>
+  </differential>
+</StructureDefinition>
