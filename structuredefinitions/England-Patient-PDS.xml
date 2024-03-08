@@ -27,76 +27,6 @@
   <baseDefinition value="https://fhir.hl7.org.uk/StructureDefinition/UKCore-Patient" />
   <derivation value="constraint" />
   <differential>
-    <element id="Patient.extension:deathNotificationStatus">
-      <path value="Patient.extension" />
-      <sliceName value="deathNotificationStatus" />
-    </element>
-    <element id="Patient.extension:deathNotificationStatus.extension">
-      <path value="Patient.extension.extension" />
-      <min value="1" />
-    </element>
-    <element id="Patient.identifier:backOfficeLocation">
-      <path value="Patient.identifier" />
-      <sliceName value="backOfficeLocation" />
-    </element>
-    <element id="Patient.identifier:backOfficeLocation.system">
-      <path value="Patient.identifier.system" />
-      <min value="1" />
-      <constraint>
-        <key value="PDS-Pat-001" />
-        <severity value="error" />
-        <human value="system SHALL be a numerical value with a maximum length of 5 digits" />
-        <expression value="system.matches('[0-9]{5}')" />
-      </constraint>
-    </element>
-    <element id="Patient.identifier:backOfficeLocation.period">
-      <path value="Patient.identifier.period" />
-      <min value="1" />
-    </element>
-    <element id="Patient.identifier:sliceIdentifier">
-      <path value="Patient.identifier" />
-      <sliceName value="sliceIdentifier" />
-    </element>
-    <element id="Patient.identifier:nhaisPosting">
-      <path value="Patient.identifier" />
-      <sliceName value="nhaisPosting" />
-    </element>
-    <element id="Patient.identifier:nhaisPosting.system">
-      <path value="Patient.identifier.system" />
-      <min value="1" />
-    </element>
-    <element id="Patient.identifier:nhaisPosting.period">
-      <path value="Patient.identifier.period" />
-      <min value="1" />
-    </element>
-    <element id="Patient.identifier:registeringAuthority">
-      <path value="Patient.identifier" />
-      <sliceName value="registeringAuthority" />
-      <constraint>
-        <key value="PDS-Pat-004" />
-        <severity value="error" />
-        <human value="a minimum of two between type, system and value SHALL be present" />
-        <expression value="(type.exists() and system.exists()) or (type.exists() and value.exists()) or (system.exists() and value.exists()) or (type.exists() and system.exists() and value.exists())" />
-      </constraint>
-    </element>
-    <element id="Patient.identifier:registeringAuthority.system">
-      <path value="Patient.identifier.system" />
-      <constraint>
-        <key value="PDS-Pat-002" />
-        <severity value="error" />
-        <human value="system is between 2 and 15 digits" />
-        <expression value="system.matches('[A-Z]([A-Za-z0-9_]){2,15}')" />
-      </constraint>
-    </element>
-    <element id="Patient.identifier:registeringAuthority.value">
-      <path value="Patient.identifier.value" />
-      <constraint>
-        <key value="PDS-Pat-003" />
-        <severity value="error" />
-        <human value="value is between 2 and 20 digits" />
-        <expression value="value.matches('[A-Z]([A-Za-z0-9_]){2,20}')" />
-      </constraint>
-    </element>
     <element id="Patient.name">
       <path value="Patient.name" />
       <min value="1" />
@@ -111,18 +41,6 @@
     </element>
     <element id="Patient.address">
       <path value="Patient.address" />
-      <min value="1" />
-    </element>
-    <element id="Patient.address.extension:addressKey">
-      <path value="Patient.address.extension" />
-      <sliceName value="addressKey" />
-    </element>
-    <element id="Patient.address.extension:addressKey.extension">
-      <path value="Patient.address.extension.extension" />
-      <min value="2" />
-    </element>
-    <element id="Patient.communication">
-      <path value="Patient.communication" />
       <min value="1" />
     </element>
   </differential>
