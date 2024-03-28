@@ -26,3 +26,18 @@ To set up the validation service within a fork add the following secrets:
 - ONTO_CLIENT_ID
 - ONTO_CLIENT_SECRET
 
+## Package Creation (in development)
+- Create a new branch named package-*[programme]*
+- Within the branch remove any unneccessary assets
+- amend the package.json (mandatory)
+  - name: uk.nhsengland.r4*[programme]*
+  - description: NHS England *[programme]* FHIR Implementation Guide. *[Optional: More information, such as "for validation purposes only"]*
+  - version: semantic versioning, e.g. 0.0.1 
+- Go to Actions and within the left hand pane named "Actions" "All Worflows" select [Create FHIR Package](https://github.com/NHSDigital/NHSEngland-FHIR-Examples/actions/workflows/createPackage.yml).
+  - Click Run workflow button (right hand side)
+  - Choose your branch
+  - Click Run workflow (green button).
+- If successful, go to the [main page](https://github.com/NHSDigital/NHSEngland-FHIR-Examples) and choose your branch
+- download the package file [filename].tar.gz and upload to your server, e.g. AWS S3
+
+More information on package creation, along with optional attributes for package.json, see [https://hl7.org/fhir/packages.html](https://hl7.org/fhir/packages.html).

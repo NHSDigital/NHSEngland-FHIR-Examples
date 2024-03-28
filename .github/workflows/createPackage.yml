@@ -1,0 +1,106 @@
+name: Create FHIR Package
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+    inputs: {}
+      
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Fail if branch main
+        if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+        run: |
+          echo "This workflow should not be triggered with workflow_dispatch on the main branch"
+          exit 1
+
+      - name: Check package.json mandatory requirements
+        run: |
+          check_attribute() {
+            local value=$(jq -r ".$1" package.json)
+            if [[ -z "$value" ]]; then
+              echo "Error: '$1' attribute is missing or empty in package.json"
+              exit 2
+            fi
+          }
+
+          # Check if package.json exists
+          if [ ! -f "package.json" ]; then
+            echo "Error: package.json file not found"
+            exit 2
+          fi
+
+          # Check required attributes
+          check_attribute "name"
+          check_attribute "version"
+          check_attribute "description"
+          check_attribute "author"
+          check_attribute "version"
+
+          echo "All required attributes are present and non-empty in package.json"
+
+      - name: create package folder and copy files
+        run: |
+          mkdir -p temp
+          mkdir -p temp/package/
+          find ./*/* -type f \( -name "*.json" -o -name "*.xml" \) -not -path "./examples/*" | xargs -I {} cp {} temp/package/
+          cp package.json temp/package/
+          mkdir -p temp/example
+          find ./examples -type f \( -name "*.json" -o -name "*.xml" \) | xargs -I {} cp {} temp/example/
+
+      - name: Find and convert XML files to JSON
+        run: |
+          post_xml_files() {
+            local dir=$1
+            local files=($(find "$dir" -type f -name "*.xml"))
+            for file in "${files[@]}"; do
+              curl -X 'POST' \
+              'https://3cdzg7kbj4.execute-api.eu-west-2.amazonaws.com/poc/Conformance/FHIR/R4/$convert' \
+              -H 'accept: application/fhir+json' \
+              -H 'Content-Type: application/fhir+xml' \
+              -d @"$file" -o "${file%.xml}.json"
+              echo "File $file posted and response saved as ${file%.xml}.json"
+
+              rm "$file"
+              echo "File $file deleted"
+            done
+          }
+          post_xml_files ./temp/package
+          post_xml_files ./temp/example
+
+      - name: tarbell package
+        run: |
+          name=$(jq -r '.name' package.json)
+          version=$(jq -r '.version' package.json)
+          tar_filename="${name} ${version}.tar.gz"
+          echo $tar_filename
+          cd temp
+          tar -czvf "$tar_filename" package example
+          cd ..
+          mv "temp/$tar_filename" .
+          rm -r temp
+
+      # Commit all changed files back to the repository
+      - name: Commit changes
+        run: |
+          git config --global user.name "Create.Package"
+          git config --global user.email "username@users.noreply.github.com"
+          git add -A
+          git commit -m "Create Package"
+          git push origin ${{ github.head_ref || github.ref_name }}
+
