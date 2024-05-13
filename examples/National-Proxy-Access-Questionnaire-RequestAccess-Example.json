@@ -2,8 +2,8 @@
   "resourceType": "Questionnaire",
   "id": "01dc6813-3421-4d14-948d-a4888241add1",
   "meta": {
-    "versionId": "26",
-    "lastUpdated": "2024-05-13T11:48:18.536Z"
+    "versionId": "28",
+    "lastUpdated": "2024-05-13T12:04:54.924Z"
   },
   "url": "https://fhir.nhs.uk/England/Questionnaire/ProxyAccessRequest",
   "name": "Consent",
@@ -173,6 +173,13 @@
           ],
           "linkId": "relatedPerson_relationship",
           "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#relationship",
+          "code": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "722011000000106",
+              "display": "Relationship (qualifier value)"
+            }
+          ],
           "prefix": "1.7",
           "text": "Relationship",
           "type": "choice",
