@@ -1,0 +1,443 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "01dc6813-3421-4d14-948d-a4888241add1",
+    "meta": {
+      "versionId": "19",
+      "lastUpdated": "2024-05-13T11:03:59.262Z"
+    },
+    "url": "https://fhir.nhs.uk/England/Questionnaire/ProxyAccessRequest",
+    "name": "Consent",
+    "title": "Proxy Access Request",
+    "status": "draft",
+    "subjectType": [
+      "RelatedPerson"
+    ],
+    "date": "2024-04-25",
+    "publisher": "NHS England",
+    "description": "A form to request access to health and care services on behalf of someone else.",
+    "purpose": "Add someone to your NHS account",
+    "item": [
+      {
+        "linkId": "relatedPerson",
+        "prefix": "1",
+        "text": "Proxy details",
+        "type": "group",
+        "required": true,
+        "readOnly": true,
+        "item": [
+          {
+            "linkId": "relatedPerson_identifier",
+            "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#identifier",
+            "prefix": "1.1",
+            "text": "NHS number",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "maxLength": 10
+          },
+          {
+            "linkId": "relatedPerson_name",
+            "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#name",
+            "prefix": "1.2",
+            "text": "Name",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "relatedPerson_name_given",
+                "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#name.given",
+                "prefix": "1.2.1",
+                "text": "First name",
+                "type": "string",
+                "required": true,
+                "repeats": false,
+                "readOnly": true
+              },
+              {
+                "linkId": "relatedPerson_name_family",
+                "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#name.family",
+                "prefix": "1.2.2",
+                "text": "Last name",
+                "type": "string",
+                "required": true,
+                "repeats": false,
+                "readOnly": true
+              }
+            ]
+          },
+          {
+            "linkId": "relatedPerson_birthDate",
+            "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#birthDate",
+            "prefix": "1.3",
+            "text": "Date of birth",
+            "type": "date",
+            "required": true,
+            "repeats": false,
+            "readOnly": true
+          },
+          {
+            "linkId": "relatedPerson_phone",
+            "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#telecom.value",
+            "prefix": "1.4",
+            "text": "Phone number",
+            "type": "string",
+            "required": false,
+            "repeats": false,
+            "readOnly": true
+          },
+          {
+            "linkId": "relatedPerson_email",
+            "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#telecom.value",
+            "prefix": "1.5",
+            "text": "Email",
+            "type": "string",
+            "required": false,
+            "repeats": false,
+            "readOnly": true
+          },
+          {
+            "linkId": "proxy_address",
+            "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#address",
+            "prefix": "1.6",
+            "text": "Address",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "proxy_address_line",
+                "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#address.line",
+                "prefix": "1.6.1",
+                "text": "Line",
+                "type": "string",
+                "required": false,
+                "readOnly": true
+              },
+              {
+                "linkId": "proxy_address_city",
+                "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#address.city",
+                "prefix": "1.6.2",
+                "text": "City",
+                "type": "string",
+                "required": false,
+                "readOnly": true
+              },
+              {
+                "linkId": "proxy_address_district",
+                "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#address.district",
+                "prefix": "1.6.3",
+                "text": "District",
+                "type": "string",
+                "required": false,
+                "readOnly": true
+              },
+              {
+                "linkId": "proxy_address_postalCode",
+                "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#address.postalCode",
+                "prefix": "1.6.4",
+                "text": "Postcode",
+                "type": "string",
+                "required": false,
+                "readOnly": true
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/questionnaire-item-control",
+                      "code": "drop-down",
+                      "display": "Drop down"
+                    }
+                  ]
+                }
+              }
+            ],
+            "linkId": "relatedPerson_relationship",
+            "definition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson#relationship",
+            "prefix": "1.7",
+            "text": "Relationship",
+            "type": "choice",
+            "required": true,
+            "repeats": false,
+            "readOnly": false,
+            "answerOption": [
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                  "code": "PRN",
+                  "display": "Parent"
+                }
+              },
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                  "code": "_PersonalRelationshipRoleType",
+                  "display": "Personal relationship with the patient"
+                }
+              },
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                  "code": "HPOWATT",
+                  "display": "Healthcare power of attorney"
+                }
+              },
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                  "code": "DPOWATT",
+                  "display": "Durable power of attorney"
+                }
+              },
+              {
+                "valueCoding": {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                  "code": "GUARD",
+                  "display": "Guardian"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "linkId": "patient",
+        "prefix": "2",
+        "text": "Patient details",
+        "type": "group",
+        "item": [
+          {
+            "linkId": "patient_identifier",
+            "definition": "http://hl7.org/fhir/StructureDefinition/Patient#identifier",
+            "prefix": "2.1",
+            "text": "NHS number",
+            "type": "string",
+            "required": true,
+            "repeats": false,
+            "readOnly": false,
+            "maxLength": 10
+          },
+          {
+            "linkId": "patient_generalPractitioner",
+            "definition": "http://hl7.org/fhir/StructureDefinition/Patient#generalPractitioner.reference",
+            "prefix": "2.2",
+            "text": "ODS code",
+            "type": "string",
+            "required": true,
+            "readOnly": true
+          },
+          {
+            "linkId": "patient_name",
+            "definition": "http://hl7.org/fhir/StructureDefinition/Patient#name",
+            "prefix": "2.3",
+            "text": "Name",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "patient_name_given",
+                "definition": "http://hl7.org/fhir/StructureDefinition/Patient#name.given",
+                "prefix": "2.3.1",
+                "text": "First name",
+                "type": "string",
+                "required": true,
+                "repeats": false,
+                "readOnly": true
+              },
+              {
+                "linkId": "patient_name_family",
+                "definition": "http://hl7.org/fhir/StructureDefinition/Patient#name.family",
+                "prefix": "2.3.2",
+                "text": "Last name",
+                "type": "string",
+                "required": true,
+                "repeats": false,
+                "readOnly": true
+              }
+            ]
+          },
+          {
+            "linkId": "patient_birthDate",
+            "definition": "http://hl7.org/fhir/StructureDefinition/Patient#birthDate",
+            "prefix": "2.4",
+            "text": "Date of birth",
+            "type": "date",
+            "required": true,
+            "repeats": false,
+            "readOnly": false
+          },
+          {
+            "linkId": "patient_phone",
+            "definition": "http://hl7.org/fhir/StructureDefinition/Patient#telecom.value",
+            "prefix": "2.5",
+            "text": "Phone number",
+            "type": "string",
+            "required": false,
+            "repeats": false,
+            "readOnly": true
+          },
+          {
+            "linkId": "patient_email",
+            "definition": "http://hl7.org/fhir/StructureDefinition/Patient#telecom.value",
+            "prefix": "2.6",
+            "text": "Email",
+            "type": "string",
+            "required": false,
+            "repeats": false,
+            "readOnly": true
+          },
+          {
+            "linkId": "patient_address",
+            "definition": "http://hl7.org/fhir/StructureDefinition/Patient#address",
+            "prefix": "2.7",
+            "text": "Address",
+            "type": "group",
+            "item": [
+              {
+                "linkId": "patient_address_line",
+                "definition": "http://hl7.org/fhir/StructureDefinition/Patient#address.line",
+                "prefix": "2.7.1",
+                "text": "Line",
+                "type": "string",
+                "required": false,
+                "readOnly": true
+              },
+              {
+                "linkId": "patient_address_city",
+                "definition": "http://hl7.org/fhir/StructureDefinition/Patient#address.city",
+                "prefix": "2.7.2",
+                "text": "City",
+                "type": "string",
+                "required": false,
+                "readOnly": true
+              },
+              {
+                "linkId": "patient_address_district",
+                "definition": "http://hl7.org/fhir/StructureDefinition/Patient#address.district",
+                "prefix": "2.7.3",
+                "text": "District",
+                "type": "string",
+                "required": false,
+                "readOnly": true
+              },
+              {
+                "linkId": "patient_address_postalCode",
+                "definition": "http://hl7.org/fhir/StructureDefinition/Patient#address.postalCode",
+                "prefix": "2.7.4",
+                "text": "Postcode",
+                "type": "string",
+                "required": false,
+                "readOnly": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "linkId": "lpa_access_code",
+        "definition": "http://hl7.org/fhir/StructureDefinition/Consent#policy",
+        "prefix": "3",
+        "text": "LPA access code",
+        "type": "string",
+        "required": false,
+        "repeats": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
+            "valueBoolean": true
+          }
+        ],
+        "linkId": "categgory",
+        "definition": "http://hl7.org/fhir/StructureDefinition/Consent#Consent.category",
+        "prefix": "4",
+        "text": "Request Consent Category",
+        "type": "choice",
+        "initial": [
+          {
+            "valueCoding": {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "INFA"
+            }
+          }
+        ]
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-hidden",
+            "valueBoolean": true
+          }
+        ],
+        "linkId": "scope",
+        "definition": "http://hl7.org/fhir/StructureDefinition/Consent#Consent.scope",
+        "prefix": "5",
+        "text": "Request Consent Scope",
+        "type": "choice",
+        "initial": [
+          {
+            "valueCoding": {
+              "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+              "code": "patient-privacy"
+            }
+          }
+        ]
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/questionnaire-item-control",
+                  "code": "drop-down",
+                  "display": "Drop down"
+                }
+              ]
+            }
+          }
+        ],
+        "linkId": "requested_services",
+        "definition": "http://hl7.org/fhir/StructureDefinition/Consent#provision.class",
+        "prefix": "6",
+        "text": "Requested services",
+        "type": "choice",
+        "required": true,
+        "repeats": true,
+        "readOnly": false,
+        "answerOption": [
+          {
+            "valueCoding": {
+              "system": "https://fhir.nhs.uk/England/CodeSystem/consentaction",
+              "code": "appointments",
+              "display": "manage appointments"
+            }
+          },
+          {
+            "valueCoding": {
+              "system": "https://fhir.nhs.uk/England/CodeSystem/consentaction",
+              "code": "medicines",
+              "display": "manage medicines"
+            }
+          },
+          {
+            "valueCoding": {
+              "system": "https://fhir.nhs.uk/England/CodeSystem/consentaction",
+              "code": "records",
+              "display": "access medical records"
+            }
+          },
+          {
+            "valueCoding": {
+              "system": "https://fhir.nhs.uk/England/CodeSystem/consentaction",
+              "code": "demographics",
+              "display": "manage demographics and contact details"
+            }
+          }
+        ]
+      }
+    ]
+  }
