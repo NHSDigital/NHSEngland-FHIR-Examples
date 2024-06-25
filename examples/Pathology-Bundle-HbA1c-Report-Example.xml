@@ -325,7 +325,7 @@
           <reference value="urn:uuid:bab0eaec-1ec5-4598-b660-90bb38a1030d" />
         </specimen>
         <referenceRange>
-          <text value="DIAGNOSIS OF DIABETES MELLITUS:&#xD;&#xA;HbA1c of 48 mmol/mol and above is diagnostic of DM (WHO 2011)&#xD;&#xA;42 - 47 mmol/mol indicates high risk of DM (NICE Guidance PH38 2012)&#xD;&#xA;&#xD;&#xA;MONITORING OF DIABETES MELLITUS (ADULTS):&#xD;&#xA;Type 2 target values: 48 mmol/mol – 57 mmol/mol (NICE Guidelines NG28)&#xD;&#xA;Type 1 target values: 48 mmol/mol or lower (NICE Guidelines NG17)&#xD;&#xA;" />
+          <text value="DIAGNOSIS OF DIABETES MELLITUS:&#xD;&#xA;HbA1c of 48 mmol/mol and above is diagnostic of DM (WHO 2011)&#xD;&#xA;42 - 47 mmol/mol indicates high risk of DM (NICE Guidance PH38 2012)&#xD;&#xA;&#xD;&#xA;MONITORING OF DIABETES MELLITUS (ADULTS):&#xD;&#xA;Type 2 target values: 48 mmol/mol – 57 mmol/mol (NICE Guidelines NG28)&#xD;&#xA;Type 1 target values: 48 mmol/mol or lower (NICE Guidelines NG17)" />
         </referenceRange>
       </Observation>
     </resource>
