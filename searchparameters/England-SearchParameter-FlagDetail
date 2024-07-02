@@ -1,13 +1,13 @@
 <SearchParameter xmlns="http://hl7.org/fhir">
-  <id value="FlagDetail" />
+  <id value="England-SearchParameter-FlagDetail" />
   <text>
     <status value="generated" />
     <div xmlns="http://www.w3.org/1999/xhtml"><h2>SearchParameterFlagDetailExtension</h2><p>Parameter <code>detail</code>:<code>reference</code></p><div><p>Search for Condition, Flag or Consent resources referenced in flag detail extension</p>
 </div><table class="grid"><tr><td>Resource</td><td><a href="http://hl7.org/fhir/R4/flag.html">Flag</a></td></tr><tr><td>Expression</td><td><code>Flag.extension('http://hl7.org/fhir/StructureDefinition/flag-detail')</code></td></tr><tr><td>Target Resources</td><td><a href="http://hl7.org/fhir/R4/condition.html">Condition</a>, <a href="http://hl7.org/fhir/R4/flag.html">Flag</a>, <a href="http://hl7.org/fhir/R4/consent.html">Consent</a></td></tr><tr><td>Multiples</td><td><ul><li>multipleAnd: It's up to the server whether the parameter may repeat in order to specify multiple values that must all be true</li><li>multipleOr: It's up to the server whether the parameter can have multiple values (separated by comma) where at least one must be true</li></ul></td></tr></table></div>
   </text>
-  <url value="https://fhir.nhs.uk/England/SearchParameter/FlagDetail" />
+  <url value="https://fhir.nhs.uk/England/SearchParameter/England-SearchParameter-FlagDetail" />
   <version value="0.4.0" />
-  <name value="SearchParameterFlagDetailExtension" />
+  <name value="EnglandSearchParameterFlagDetail" />
   <status value="active" />
   <date value="2024-02-14" />
   <publisher value="NHS England" />
@@ -29,5 +29,4 @@
               value="Flag.extension('http://hl7.org/fhir/StructureDefinition/flag-detail')" />
   <target value="Condition" />
   <target value="Flag" />
-  <target value="Consent" />
 </SearchParameter>
